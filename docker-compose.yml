@@ -1,0 +1,19 @@
+version: "3"
+services:
+  web-root:
+    image: "dmitrykyz/web-root:v1"
+    container_name: web-root
+    hostname: web-root
+    environment:
+      CHILD_HOST: "web-child"
+      CHILD_PORT: "8080"
+    ports:
+      - target: 8080
+        published: 80
+  web-child:
+    image: "dmitrykyz/web-child:v1"
+    container_name: web-child
+    hostname: web-child
+    ports:
+      - target: 8080
+        published: 8080
